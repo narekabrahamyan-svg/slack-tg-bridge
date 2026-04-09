@@ -36,7 +36,21 @@ app.post("/slack", async (req, res) => {
     return res.sendStatus(200);
   }
   const text = event.text || "(empty message)";
-  const msg = "DuplicateRadar: " + text;
+
+  const emojiMap = {
+  ":white_check_mark:": "✅",
+  ":x:": "❌",
+  ":warning:": "⚠️",
+  ":fire:": "🔥",
+  ":rocket:": "🚀",
+  ":thumbsup:": "👍",
+  ":thumbsdown:": "👎",
+  ":eyes:": "👀",
+  ":tada:": "🎉",
+  ":bell:": "🔔",
+};
+const converted = text.replace(/:[a-z_]+:/g, match => emojiMap[match] || match);
+const msg = "DuplicateRadar:\n" + converted;
   const users = await redisClient.sMembers("tg_users");
   for (const chatId of users) {
     await fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage", {
