@@ -31,7 +31,7 @@ app.post("/slack", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Bridge running on port 3000"));
-  res.sendStatus(200);\
-\});\
-\
+  res.sendStatus(200);
+});
+
 app.listen(3000, () => console.log("Bridge running on port 3000"));}
