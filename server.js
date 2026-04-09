@@ -17,7 +17,7 @@ app.post("/slack", async (req, res) => {
   }
   const text = event.text || "(empty message)";
   const user = event.user || "unknown";
-  const msg = "Slack message\nUser: " + user + "\n" + text;
+  const msg = "DuplicateRadar: " + text;
   await fetch("https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
