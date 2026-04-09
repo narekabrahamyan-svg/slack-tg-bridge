@@ -4,8 +4,8 @@ const fetch = require("node-fetch");
 const app = express();
 app.use(express.json());
 
-const TG_TOKEN = process.env.8645976670:AAG72nQNHQDT1bdtOJpiAxcc23uZzEgj0b0;
-const TG_CHAT_ID = process.env.8460807634;
+const TG_TOKEN = process.env.TG_TOKEN;
+const TG_CHAT_ID = process.env.TG_CHAT_ID;
 
 app.post("/slack", async (req, res) => {
   if (req.body.type === "url_verification") {
