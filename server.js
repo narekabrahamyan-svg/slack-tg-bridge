@@ -32,7 +32,7 @@ app.post("/slack", async (req, res) => {
     return res.json({ challenge: req.body.challenge });
   }
   const event = req.body.event;
-  if (!event || event.type !== "message" || event.bot_id) {
+  if (!event || event.type !== "message") {
     return res.sendStatus(200);
   }
   const text = event.text || "(empty message)";
